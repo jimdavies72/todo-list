@@ -17,6 +17,7 @@ const ToDoList = () => {
     };
     newArray.push(itemObject);
     setToDoItems(newArray);
+    setToDoText("");
   };
 
   const removeHandler = (index) => {
@@ -25,28 +26,32 @@ const ToDoList = () => {
     setToDoItems(newArray);
   };
 
-  const tickHandler = (index) => {
+  const tickHandler = (index, complete) => {
     const newArray = [...toDoItems];
-    newArray[index].complete = true;
+    newArray[index].complete = !complete;
     setToDoItems(newArray);
   };
 
   return (
-    <div>
-      <h1>To Do List</h1>
-      <input type="text" onChange={inputTextHandler} />
-      <button onClick={addHandler}>ADD</button>
-      {toDoItems.map((toDoItem, index) => {
-        return (
-          <ItemCard
-            key={index}
-            item={toDoItem.text}
-            complete={toDoItem.complete}
-            removeMe={() => removeHandler(index)}
-            tickMe={() => tickHandler(index)}
-          />
-        );
-      })}
+    <div className="container">
+      <div className="todo-list">
+        <h1>To Do List</h1>
+        <div>
+          <input type="text" value={toDoText} onChange={inputTextHandler} />
+          <i className="fa fa-plus-square" onClick={addHandler}></i>
+        </div>
+        {toDoItems.map((toDoItem, index) => {
+          return (
+            <ItemCard
+              key={index}
+              item={toDoItem.text}
+              complete={toDoItem.complete}
+              removeMe={() => removeHandler(index)}
+              tickMe={() => tickHandler(index, toDoItem.complete)}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 };
@@ -57,9 +62,14 @@ const ItemCard = (props) => {
       <span className={props.complete ? "complete" : ""}>
         <h3>{props.item}</h3>
       </span>
-
-      <button onClick={props.tickMe}>Done</button>
-      <button onClick={props.removeMe}>Delete</button>
+      <>
+        {props.complete ? (
+          <i className="fa fa-times" onClick={props.tickMe}></i>
+        ) : (
+          <i className="fa fa-check" onClick={props.tickMe}></i>
+        )}
+        <i className="fa fa-trash" onClick={props.removeMe}></i>
+      </>
     </div>
   );
 };

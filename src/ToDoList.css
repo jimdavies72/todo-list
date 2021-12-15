@@ -1,3 +1,17 @@
+.container {
+  width: 50%;
+  margin: 20px auto;
+  height: 100%;
+  min-height: 500px;
+  background-color: lightblue;
+}
+
+.todo-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 .itemCard {
   display: flex;
   justify-content: center;
