@@ -36,9 +36,9 @@ const ToDoList = () => {
 
   const editHandler = (index) => {
     //TODO: add the ability to edit saved items
-    //window.alert("So this would be an edit/update!");
-    const newArray = [...toDoItems];
-    newArray.splice(index, 1);
+    window.alert("So this would be an edit/update!");
+    //const newArray = [...toDoItems];
+    //newArray.splice(index, 1);
   };
 
   const tickHandler = (index, complete) => {
