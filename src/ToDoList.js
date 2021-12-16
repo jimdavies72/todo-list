@@ -4,13 +4,12 @@ import { useState } from "react";
 const ToDoList = () => {
   const [toDoItems, setToDoItems] = useState([]);
   const [toDoText, setToDoText] = useState("");
-  const [toggle, setToggle] = useState(true);
 
   const inputTextHandler = (event) => {
     setToDoText(event.target.value);
   };
 
-  const KeyDownHandler = (event) => {
+  const keyDownHandler = (event) => {
     if (event.key === "Enter") {
       addHandler();
     }
@@ -36,10 +35,10 @@ const ToDoList = () => {
   };
 
   const editHandler = (index) => {
-    //window.alert("hello");
-    {
-      toggle ? setToggle(false) : <input type="text" value="" />;
-    }
+    //TODO: add the ability to edit saved items
+    //window.alert("So this would be an edit/update!");
+    const newArray = [...toDoItems];
+    newArray.splice(index, 1);
   };
 
   const tickHandler = (index, complete) => {
@@ -61,7 +60,7 @@ const ToDoList = () => {
             placeholder="Item"
             value={toDoText}
             onChange={inputTextHandler}
-            onKeyDown={KeyDownHandler}
+            onKeyDown={keyDownHandler}
           />
           <p className="add-item">
             <i className="fa fa-plus-square" onClick={addHandler}></i>
