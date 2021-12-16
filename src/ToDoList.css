@@ -1,9 +1,125 @@
+/* 
+-----
+Fonts
+-----
+font-family: 'Roboto', sans-serif;
+*/
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+/* 
+-------
+globals
+-------
+*/
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+:root {
+  --ff-primary: "Roboto", sans-serif;
+  --col-white: white;
+  --col-green: green;
+  --col-red: red;
+  --col-light-grey: #e7ebef;
+  --col-med-grey: #adb5bd;
+  --col-dar-grey: #687178;
+  --col-charcoal-grey: #41474e;
+  --col-med-blue: mediumblue;
+  --col-orange-red: orangered;
+  --col-med-orange: orange;
+  --light-shadow: 22px 22px 15px -10px rgba(0, 0, 0, 0.28);
+  --dark-shadow: 22px 22px 15px -10px rgba(0, 0, 0, 0.66);
+  --inset-shadow: 4px 5px 6px -2px rgba(0, 0, 0, 0.75) inset;
+  --text-shadow: 2px 2px 1px rgba(255, 255, 255, 1);
+  --transition-slow: 1s;
+  --transition-med: 0.75s;
+  --transition-fast: 0.5s;
+  --transition-vfast: 0.25s;
+}
+
+body {
+  font-family: var(--ff-primary);
+  background-color: var(--col-light-grey);
+}
+
+/* 
+--------------
+To Do List App
+--------------
+*/
+
 .container {
   width: 50%;
+  max-width: 500px;
   margin: 20px auto;
   height: 100%;
   min-height: 500px;
-  background-color: lightblue;
+  background-color: var(--col-white);
+  border-radius: 12px;
+  box-shadow: var(--dark-shadow);
+}
+
+.heading {
+  margin-top: 10px;
+  padding: 5px 20px;
+  background-color: var(--col-light-grey);
+  border-radius: 25px;
+  box-shadow: var(--inset-shadow);
+}
+
+.input-fields {
+  margin-top: 10px;
+  margin-bottom: 30px;
+  justify-content: center;
+}
+
+.input-fields input:focus {
+  outline: none;
+}
+
+.input-fields,
+.item-card {
+  display: flex;
+  align-items: center;
+  width: 95%;
+  background-color: var(--col-light-grey);
+  border-radius: 10px;
+  box-shadow: var(--light-shadow);
+}
+
+.text-input {
+  width: 75%;
+  padding: 5px 10px;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: var(--inset-shadow);
+  font-family: inherit;
+  font-size: 1.2rem;
+}
+
+p {
+  margin-top: 2px;
+  margin-bottom: 2px;
+  margin-left: 10px;
+  font-size: 1.2rem;
+}
+
+.add-item {
+  padding: 0;
+  color: var(--col-green);
+  font-size: 2rem;
 }
 
 .todo-list {
@@ -12,13 +128,62 @@
   align-items: center;
   flex-direction: column;
 }
-.itemCard {
+
+.item-card {
+  justify-content: space-between;
+  font-family: inherit;
+  margin-bottom: 5px;
+  padding: 3px 12px;
+}
+
+.item:hover {
+  cursor: pointer;
+}
+
+.item-icons {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: row;
+  margin-right: 20px;
+}
+
+.fa:hover {
+  cursor: pointer;
+}
+
+.fa-trash {
+  color: var(--col-green);
+}
+
+.fa-trash:hover {
+  color: var(--col-red);
+}
+
+.fa-check:hover {
+  color: var(--col-green);
+}
+
+.fa-times {
+  color: var(--col-red);
+}
+
+.fa-times:hover {
+  color: var(--col-green);
 }
 
 .complete {
+  color: var(--col-med-grey);
   text-decoration: line-through;
+  font-style: italic;
+  text-shadow: var(--text-shadow);
+}
+
+/* 
+-------------
+Media Queries
+-------------
+*/
+
+@media screen and (max-width: 620px) {
 }
