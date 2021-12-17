@@ -1,10 +1,14 @@
 import "./ToDoList.css";
 import ItemCard from "./components/ItemCard";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const ToDoList = () => {
   const [toDoItems, setToDoItems] = useState([]);
   const [toDoText, setToDoText] = useState("");
+
+  useEffect(() => {
+    document.title = "To-do List App";
+  }, []);
 
   const inputTextHandler = (event) => {
     setToDoText(event.target.value);
